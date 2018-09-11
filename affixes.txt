@@ -17,7 +17,7 @@ suffix_data <- textcnt(data, method = "suffix", n = 5,)
 suff_one <- data.frame(counts = unclass(suffix_data), size = nchar(names(suffix_data)))
 suff_two <- format(suffix_data)
 ##NOTE! Change the path in the next line to your output folder
-setwd("/home/marc/qacorp/qacorp_affixes")
+setwd("path/to/directory")
 write.csv(pref_one, "pref_one.csv")
 write.csv(pref_two, "pref_two.csv")
 write.csv(suff_one, "suff_one.csv")
