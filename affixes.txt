@@ -9,11 +9,13 @@ for (f in files) {
 tempData = scan( f, what="character")
 data <- c(data,tempData)    
 } 
+# removes punctuation
+myData <- gsub("[[:punct:]]", "", data)
 ## gets prefixes and suffixes and stores them as data frames
-prefix_data <- textcnt(data, method = "prefix", n = 5L,)
+prefix_data <- textcnt(myData, method = "prefix", n = 5L,)
 pref_one <- data.frame(counts = unclass(prefix_data), size = nchar(names(prefix_data)))
 pref_two <- format(prefix_data)
-suffix_data <- textcnt(data, method = "suffix", n = 5,)
+suffix_data <- textcnt(myData, method = "suffix", n = 5,)
 suff_one <- data.frame(counts = unclass(suffix_data), size = nchar(names(suffix_data)))
 suff_two <- format(suffix_data)
 ##NOTE! Change the path in the next line to your output folder
