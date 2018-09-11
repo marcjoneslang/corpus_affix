@@ -1,0 +1,20 @@
+##import libraries
+library(tau)
+library(readr)
+##store corpus data
+## NOTE!! in the next line, change file path!!
+allData <- list.files("/path/to/files")
+prefix_data <- textcnt(allData, method = "prefix", n = 5L,)
+suffix_data <- textcnt(allData, method = "suffix", n = 5,)
+##makes data frames for prefixes, suffixes and formatted tables
+pref_one <- data.frame(counts = unclass(prefix_data), size = nchar(names(prefix_data)))
+pref_two <- format(prefix_data)
+suff_one <- data.frame(counts = unclass(suffix_data), size = nchar(names(suffix_data)))
+suff_two <- format(suffix_data)
+## outputs to csv files
+## NOTE!! in the next line select your output path
+setwd("/path/to/output_files/")
+write.csv(pref_one, "pref_one.csv")
+write.csv(pref_two, "pref_two.csv")
+write.csv(suff_one, "suff_one.csv")
+write.csv(suff_two, "suff_two.csv")
