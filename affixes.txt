@@ -1,20 +1,25 @@
-##import libraries
 library(tau)
 library(readr)
-##store corpus data
-## NOTE!! in the next line, change file path!!
-allData <- list.files("/path/to/files")
-prefix_data <- textcnt(allData, method = "prefix", n = 5L,)
-suffix_data <- textcnt(allData, method = "suffix", n = 5,)
-##makes data frames for prefixes, suffixes and formatted tables
+## NOTE! Change the path in the next line to your corpus folder
+setwd("path/to/directory")
+## loops through files and stores data
+files <-list.files()
+data <- 0
+for (f in files) {
+tempData = scan( f, what="character")
+data <- c(data,tempData)    
+} 
+## gets prefixes and suffixes and stores them as data frames
+prefix_data <- textcnt(data, method = "prefix", n = 5L,)
 pref_one <- data.frame(counts = unclass(prefix_data), size = nchar(names(prefix_data)))
 pref_two <- format(prefix_data)
+suffix_data <- textcnt(data, method = "suffix", n = 5,)
 suff_one <- data.frame(counts = unclass(suffix_data), size = nchar(names(suffix_data)))
 suff_two <- format(suffix_data)
-## outputs to csv files
-## NOTE!! in the next line select your output path
-setwd("/path/to/output_files/")
+##NOTE! Change the path in the next line to your output folder
+setwd("/home/marc/qacorp/qacorp_affixes")
 write.csv(pref_one, "pref_one.csv")
 write.csv(pref_two, "pref_two.csv")
 write.csv(suff_one, "suff_one.csv")
 write.csv(suff_two, "suff_two.csv")
+
