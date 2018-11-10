@@ -1,0 +1,6 @@
+library(tau)
+library(readr)
+## NOTE! Change the path in the next line to your corpus folder
+indir <- readline(prompt = "Enter the path of your corpus directory:")
+
+

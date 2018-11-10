@@ -1,7 +1,4 @@
-library(tau)
-library(readr)
-## NOTE! Change the path in the next line to your corpus folder
-setwd("path/to/directory")
+setwd(indir)
 ## loops through files and stores data
 files <-list.files()
 data <- 0
@@ -19,9 +16,4 @@ suffix_data <- textcnt(myData, method = "suffix", n = 5,)
 suff_one <- data.frame(counts = unclass(suffix_data), size = nchar(names(suffix_data)))
 suff_two <- format(suffix_data)
 ##NOTE! Change the path in the next line to your output folder
-setwd("path/to/directory")
-write.csv(pref_one, "pref_one.csv")
-write.csv(pref_two, "pref_two.csv")
-write.csv(suff_one, "suff_one.csv")
-write.csv(suff_two, "suff_two.csv")
-
+outdir <- readline(prompt = "Enter the path of the directory to save your prefix and suffix CSV files:")

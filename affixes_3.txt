@@ -1,0 +1,5 @@
+setwd(outdir)
+write.csv(pref_one, "pref_one.csv")
+write.csv(pref_two, "pref_two.csv")
+write.csv(suff_one, "suff_one.csv")
+write.csv(suff_two, "suff_two.csv")
